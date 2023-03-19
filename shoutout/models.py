@@ -7,7 +7,8 @@ from uuid import uuid4
 class Shoutouts(models.Model):
     id = models.UUIDField(default=uuid4, primary_key=True, editable=False)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    # user_img = models.CharField(photoURL)
+    user_pfp_url = models.TextField(default="", null=True, blank=True)
+    amount = models.PositiveIntegerField(default=0, null=True, blank=True)
     message = models.TextField(null=True, blank=True)
     is_read = models.BooleanField(default=False)
     is_published = models.BooleanField(default=False)

@@ -7,4 +7,4 @@ class ShoutoutSerializer(ModelSerializer):
     user = UserSerializer(read_only=True)
     class Meta:
         model = Shoutouts
-        fields = ['id', 'user', 'message', 'is_read', 'is_published']
+        fields = ['id', 'user', 'user_pfp_url', 'amount', 'message', 'is_read', 'is_published']
