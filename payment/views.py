@@ -25,13 +25,13 @@ def save_stripe_info(request):
     user = request.user
     data = request.data
     email = data['email']
+    user_pfp_url = data['user_pfp_url']
     name = data['name']
     amount = data['amount']
     message = data['message']
     payment_method_id = data['payment_method_id']
     extra_msg  = ''
 
-    print("DATA", data)
     
     # Checking if the customer with provided email is aleady exist or not
     customer_data = stripe.Customer.list(email=email).data
@@ -64,6 +64,8 @@ def save_stripe_info(request):
       shoutout_obj = Shoutouts.objects.create(
         user=user,
         message=message,
+        user_pfp_url=user_pfp_url,
+        amount=amount
       )
       shoutout_obj.save()
       
